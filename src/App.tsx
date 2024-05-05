@@ -237,16 +237,24 @@ function App() {
                         where <MathJax inline>{"$n$"}</MathJax> is the number of control points, <MathJax inline>{"$L_p$"}</MathJax> is the polygon length, i.e. <MathJax inline>{"$\\sum_{i=0}^{n-1} |P_i - P_{i+1}|$"}</MathJax>, and <MathJax inline>{"$L_c$"}</MathJax> is the distance between the first and last control points. <br />
                         And 
                         <MathJax>{"$$L - L_c = \\frac{n-1}{n+1}(L_p - L_c)$$"}</MathJax>
-                        The algorithm is implemented in the <code>GravesenSubdivision</code> function, 
+                        The algorithm is implemented in the <code>GravesenSubdivision</code> function in <code>bezier.ts</code>,
                         which takes a list of control points and returns a list of sample points. The sample points are then used to draw the curve. 
                         For better performance, the algorithm is implemented in an iterative way using a stack.
                     </p>
                 </li>
-                <li>
+                {<li>
                     <p> B-Spline Curves: <br />
-                        The B-Spline curve is implemented in the <code>uniformBSpline</code> function.
+                        The B-Spline curve is implemented in the <code>uniformBSpline</code> function in <code>bspline.ts</code>.
                         The function takes a list of control points, a list of sampling points, and the degree of the curve.
                         The algorithm is based on the De Boor's algorithm, which is a generalization of the De Casteljau's algorithm.
+                        The algorithm is implemented in an iterative way, where the control points are updated in each iteration.
+                    </p>
+                </li>}
+                <li>
+                    <p> Cubic Catmull-Rom Spline: <br />
+                        The Cubic Catmull-Rom Spline is implemented in the <code>cubicCatmullRomSpline</code> function in <code>catmull-rom.ts</code>.
+                        The function takes a list of control points, a list of sampling points, and the knot parametrization.
+                        The algorithm is based on the Catmull-Rom spline, which is a type of Hermite spline.
                         The algorithm is implemented in an iterative way, where the control points are updated in each iteration.
                     </p>
                 </li>

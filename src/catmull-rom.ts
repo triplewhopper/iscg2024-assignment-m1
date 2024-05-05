@@ -1,5 +1,10 @@
 import { vec3 } from 'gl-matrix';
-
+/**
+ * Compute the Catmull-Rom spline for the given control points.
+ * @param ps 
+ * @param knotParametrization 
+ * @returns 
+ */
 export function cubicCatmullRomSpline(ps: readonly vec3[], knotParametrization: { uniform: boolean, chordal: boolean, centripetal: boolean }) {
     if (ps.length < 4) {
         throw new Error('At least 4 control points are required');
@@ -19,6 +24,18 @@ export function cubicCatmullRomSpline(ps: readonly vec3[], knotParametrization: 
     return { uniformResult, chordalResult, centripetalResult};
 }
 
+/**
+ * Compute the Catmull-Rom spline for the given control points.
+ * @example
+ * catmullRomImpl(ps, 0, 0); // uniform
+ * catmullRomImpl(ps, 1, 0); // chordal
+ * catmullRomImpl(ps, 0.5, 0); // centripetal
+ * @param ps control points
+ * @param alpha between 0 and 1
+ * @param tension between 0 and 1
+ * @returns 
+ * 
+ */
 function catmullRomImpl(ps: readonly vec3[], alpha: number, tension: number) {
     const result = [] as vec3[];
     for (let k = 0; k < ps.length - 3; k++) {
